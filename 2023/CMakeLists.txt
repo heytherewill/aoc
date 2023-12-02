@@ -5,5 +5,11 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(2023 main.c
         solutions/01-trebuchet.h
+        solutions/01-trebuchet.c
+        solutions/02-cubes.h
+        solutions/02-cubes.c
+        utilities/math.h
         utilities/file.h
-        utilities/string.h)
+        utilities/file.c
+        utilities/string.h
+        utilities/string.c)
