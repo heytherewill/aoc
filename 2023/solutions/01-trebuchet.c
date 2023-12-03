@@ -68,25 +68,23 @@ static long solve(bool replaceWrittenDigits) {
             currentLine = replaceWrittenDigitsOn(currentLine);
         }
 
-        char firstDigit = -1;
-        char lastDigit = -1;
+        char* numberString = malloc(3);
+        numberString[2] = '\0';
+        bool firstDigitWasFound = false;
+
         unsigned long numberOfCharsInLine = strlen(currentLine);
         for (int i = 0; i < numberOfCharsInLine; i++) {
             char character = currentLine[i];
             if (isdigit(character)) {
-                if (firstDigit < 0) {
-                    firstDigit = character;
-                    lastDigit = character;
+                if (!firstDigitWasFound) {
+                    numberString[0] = character;
+                    numberString[1] = character;
+                    firstDigitWasFound = true;
                 } else {
-                    lastDigit = character;
+                    numberString[1] = character;
                 }
             }
         }
-
-        char* numberString = malloc(3);
-        numberString[0] = firstDigit;
-        numberString[1] = lastDigit;
-        numberString[2] = '\0';
 
         count += parseLong(numberString);
     }

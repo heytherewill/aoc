@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "solutions/01-trebuchet.h"
 #include "solutions/02-cubes.h"
+#include "solutions/03-gear.h"
 
 int main() {
 
@@ -22,6 +23,10 @@ int main() {
     printf("|  Problem 02 (Cube Conundrum) |\n");
     printf("|------------------------------|\n");
     printf("|   I: %ld    |    II: %ld  |\n", solve02Part1(), solve02Part2());
+    printf("|------------------------------|\n");
+    printf("|   Problem 03  (Gear Ratio)   |\n");
+    printf("|------------------------------|\n");
+    printf("|   I: %ld  | II: %ld  |\n", solve03Part1(), solve03Part2());
     printf("|------------------------------|\n");
 
     return 0;
