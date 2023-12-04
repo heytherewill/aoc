@@ -7,10 +7,10 @@
 #include "../utilities/string.h"
 #include "../utilities/math.h"
 
-struct Insertion {
+typedef struct Insertion {
     unsigned long indexInString;
     int numberToInsert;
-};
+} Insertion;
 
 static const char* possibleDigits[9] = {
     "one",
@@ -28,7 +28,7 @@ static char* replaceWrittenDigitsOn(char* line) {
 
     int currentSubstitution = 0;
     const int maxNumberOfSubstitutions = 10;
-    struct Insertion substitutions[maxNumberOfSubstitutions];
+    Insertion substitutions[maxNumberOfSubstitutions];
     for (int i = 0; i < maxNumberOfSubstitutions; i++) {
         substitutions[i].indexInString = -1;
     }
@@ -39,7 +39,7 @@ static char* replaceWrittenDigitsOn(char* line) {
         do {
             indexOfThisDigit = indexOf(line, possibleDigits[i], startingIndex);
             if (indexOfThisDigit != -1) {
-                struct Insertion newInsertion = { indexOfThisDigit, i + 1 };
+                Insertion newInsertion = { indexOfThisDigit, i + 1 };
                 substitutions[currentSubstitution++] = newInsertion;
                 startingIndex = indexOfThisDigit + strlen(possibleDigits[i]);
             }

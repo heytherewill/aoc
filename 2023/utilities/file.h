@@ -2,6 +2,8 @@
 
 FILE* readInput(int number);
 
+int countNumberOfLines(FILE* filePointer, int numberOfColumns);
+
 #define readEveryLineForInput(number) \
 FILE* filePointer = readInput(number); \
 char* currentLine = NULL; \

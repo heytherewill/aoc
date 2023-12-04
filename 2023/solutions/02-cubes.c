@@ -6,31 +6,31 @@
 #include "../utilities/string.h"
 #include "../utilities/math.h"
 
-struct GameInfo {
+typedef struct GameInfo {
     unsigned long inputStartIndex;
     unsigned long gameId;
-};
+} GameInfo;
 
-struct BallCount {
+typedef struct BallCount {
     int red;
     int green;
     int blue;
-};
+} BallCount;
 
-static struct GameInfo parseGameId(char* currentLine) {
+static GameInfo parseGameId(char* currentLine) {
     unsigned long indexOfSpace = indexOf(currentLine, " ", 0);
     unsigned long indexOfColon = indexOf(currentLine, ":", 0);
     char* gameId = substring(currentLine, indexOfSpace + 1, indexOfColon);
-    struct GameInfo gameInfo = { indexOfColon + 2, parseLong(gameId) };
+    GameInfo gameInfo = { indexOfColon + 2, parseLong(gameId) };
     return gameInfo;
 }
 
-static struct BallCount countBallsForLine(
+static BallCount countBallsForLine(
     char *currentLine,
     const unsigned long startingIndex
 ) {
     const unsigned long currentLineLength = strlen(currentLine);
-    struct BallCount result = { 0, 0, 0 };
+    BallCount result = { 0, 0, 0 };
     unsigned long i = startingIndex;
     do {
         unsigned long startingIndexOfBallAmount = i;
@@ -67,13 +67,13 @@ static struct BallCount countBallsForLine(
 
 unsigned long solve02Part1() {
 
-    const struct BallCount maxValidBallCount = { 12, 13, 14 };
+    const BallCount maxValidBallCount = { 12, 13, 14 };
     unsigned long sumOfPossibleGameIds = 0;
 
     readEveryLineForInput(2) {
-        struct GameInfo gameInfo = parseGameId(currentLine);
+        GameInfo gameInfo = parseGameId(currentLine);
 
-        struct BallCount visibleBallCount =
+        BallCount visibleBallCount =
             countBallsForLine(currentLine,gameInfo.inputStartIndex);
 
         bool gameIsPossible =
@@ -96,9 +96,9 @@ unsigned long solve02Part2() {
     unsigned long sumOfPowerOfSets = 0;
 
     readEveryLineForInput(2) {
-        struct GameInfo gameInfo = parseGameId(currentLine);
+        GameInfo gameInfo = parseGameId(currentLine);
 
-        struct BallCount visibleBallCount =
+        BallCount visibleBallCount =
             countBallsForLine(currentLine,gameInfo.inputStartIndex);
 
         unsigned long setPower =

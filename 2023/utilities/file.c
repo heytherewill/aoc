@@ -29,3 +29,11 @@ FILE* readInput(int number) {
 
     return NULL;
 }
+
+int countNumberOfLines(FILE* filePointer, int numberOfColumns) {
+    long positionToReturnTo = ftell(filePointer);
+    fseek(filePointer, 0L, SEEK_END);
+    unsigned long fileLength = ftell(filePointer);
+    fseek(filePointer, positionToReturnTo, SEEK_SET);
+    return fileLength / numberOfColumns;
+}

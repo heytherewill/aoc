@@ -2,6 +2,7 @@
 #include "solutions/01-trebuchet.h"
 #include "solutions/02-cubes.h"
 #include "solutions/03-gear.h"
+#include "solutions/04-scratchcards.h"
 
 int main() {
 
@@ -27,6 +28,10 @@ int main() {
     printf("|   Problem 03  (Gear Ratio)   |\n");
     printf("|------------------------------|\n");
     printf("|   I: %ld  | II: %ld  |\n", solve03Part1(), solve03Part2());
+    printf("|------------------------------|\n");
+    printf("|   Problem 04 (Scratchcards)  |\n");
+    printf("|------------------------------|\n");
+    printf("|   I: %ld   |  II: %ld  |\n", solve04Part1(), solve04Part2());
     printf("|------------------------------|\n");
 
     return 0;

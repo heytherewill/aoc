@@ -5,17 +5,17 @@
 #include "../utilities/string.h"
 #include "../utilities/math.h"
 
-struct Index {
+typedef struct Index {
     long row;
     long column;
-};
+} Index;
 
-struct NeighbouringIndexes {
-    struct Index* indexes;
+typedef struct NeighbouringIndexes {
+    Index* indexes;
     int foundIndexes;
-};
+} NeighbouringIndexes;
 
-struct NeighbouringIndexes findNeighbouringIndexes(
+NeighbouringIndexes findNeighbouringIndexes(
     int row,
     int column,
     unsigned long numberOfRows,
@@ -37,7 +37,7 @@ struct NeighbouringIndexes findNeighbouringIndexes(
             (checkRowBelow * checkCharacterAfter) +
             checkCharacterBefore + checkCharacterAfter;
 
-    struct Index* indexesToCheck = malloc(totalNumberOfIndexesToCheck * sizeof(struct Index));
+    Index* indexesToCheck = malloc(totalNumberOfIndexesToCheck * sizeof(Index));
     int numberOfIndexesToCheck = 0;
 
     if (checkRowAbove) {
@@ -45,18 +45,18 @@ struct NeighbouringIndexes findNeighbouringIndexes(
         const int start = (column - numberOfDigitsForCurrentPart) - checkCharacterBefore;
         const int end = column + checkCharacterAfter;
         for (int columnToCheck = start; columnToCheck < end; columnToCheck++) {
-            const struct Index index = { rowAbove, columnToCheck };
+            const Index index = { rowAbove, columnToCheck };
             indexesToCheck[numberOfIndexesToCheck++] = index;
         }
     }
 
     if (checkCharacterBefore) {
-        const struct Index index = { row, column - numberOfDigitsForCurrentPart - 1 };
+        const Index index = { row, column - numberOfDigitsForCurrentPart - 1 };
         indexesToCheck[numberOfIndexesToCheck++] = index;
     }
 
     if (checkCharacterAfter) {
-        const struct Index index = { row, column };
+        const Index index = { row, column };
         indexesToCheck[numberOfIndexesToCheck++] = index;
     }
 
@@ -65,16 +65,16 @@ struct NeighbouringIndexes findNeighbouringIndexes(
         const int start = (column - numberOfDigitsForCurrentPart) - checkCharacterBefore;
         const int end = column + checkCharacterAfter;
         for (int columnToCheck = start; columnToCheck < end; columnToCheck++) {
-            const struct Index index = {rowBelow, columnToCheck };
+            const Index index = {rowBelow, columnToCheck };
             indexesToCheck[numberOfIndexesToCheck++] = index;
         }
     }
 
-    struct NeighbouringIndexes result = { indexesToCheck, numberOfIndexesToCheck };
+    NeighbouringIndexes result = { indexesToCheck, numberOfIndexesToCheck };
     return result;
 }
 
-bool verifyNumberValidity(FILE* filePointer, struct Index* indexes, int numberOfIndexes, long columnWidth) {
+bool verifyNumberValidity(FILE* filePointer, Index* indexes, int numberOfIndexes, long columnWidth) {
 
     bool valid = false;
     long positionToReturnTo = ftell(filePointer);
@@ -82,7 +82,7 @@ bool verifyNumberValidity(FILE* filePointer, struct Index* indexes, int numberOf
     int i = 0;
 
     while (!valid && i < numberOfIndexes) {
-        const struct Index index = indexes[i];
+        const Index index = indexes[i];
 
         long seekTo = (index.row * columnWidth) + index.column;
         fseek(filePointer, seekTo, SEEK_SET);
@@ -96,15 +96,15 @@ bool verifyNumberValidity(FILE* filePointer, struct Index* indexes, int numberOf
     return valid;
 }
 
-struct Index verifyNeighbouringGears(FILE* filePointer, struct Index* indexes, int numberOfIndexes, long columnWidth) {
+Index verifyNeighbouringGears(FILE* filePointer, Index* indexes, int numberOfIndexes, long columnWidth) {
 
-    struct Index result = {-1, -1};
+    Index result = {-1, -1};
     long positionToReturnTo = ftell(filePointer);
 
     int i = 0;
 
     while (result.row < 0 && i < numberOfIndexes) {
-        const struct Index index = indexes[i];
+        const Index index = indexes[i];
 
         long seekTo = (index.row * columnWidth) + index.column;
         fseek(filePointer, seekTo, SEEK_SET);
@@ -131,11 +131,7 @@ unsigned long solve03Part1() {
 
         if (numberOfColumns == 0) {
             numberOfColumns = strlen(currentLine);
-            long positionToReturnTo = ftell(filePointer);
-            fseek(filePointer, 0L, SEEK_END);
-            unsigned long fileLength = ftell(filePointer);
-            fseek(filePointer, positionToReturnTo, SEEK_SET);
-            numberOfRows = fileLength / numberOfColumns;
+            numberOfRows = countNumberOfLines(filePointer, numberOfColumns);
         }
 
         for (int column = 0; column < numberOfColumns; column++) {
@@ -151,7 +147,7 @@ unsigned long solve03Part1() {
                 continue;
             }
 
-            struct NeighbouringIndexes neighbouringIndexes = findNeighbouringIndexes(
+            NeighbouringIndexes neighbouringIndexes = findNeighbouringIndexes(
                 row, column, numberOfRows, numberOfColumns, numberOfDigitsForCurrentPart
             );
 
@@ -176,17 +172,17 @@ unsigned long solve03Part1() {
     return sumOfAllPartNumbers;
 }
 
-struct PartAdjacentToGear {
+typedef struct PartAdjacentToGear {
     unsigned long partNumber;
-    struct Index gearIndex;
-};
+    Index gearIndex;
+} PartAdjacentToGear;
 
 
 unsigned long solve03Part2() {
 
     unsigned long numberOfColumns = 0;
     unsigned long numberOfRows = 0;
-    struct PartAdjacentToGear* partsAdjacentToGears = malloc(1000 * sizeof(struct PartAdjacentToGear));
+    PartAdjacentToGear* partsAdjacentToGears = malloc(1000 * sizeof(PartAdjacentToGear));
 
     int row = 0;
     int partsFound = 0;
@@ -194,11 +190,7 @@ unsigned long solve03Part2() {
 
         if (numberOfColumns == 0) {
             numberOfColumns = strlen(currentLine);
-            long positionToReturnTo = ftell(filePointer);
-            fseek(filePointer, 0L, SEEK_END);
-            unsigned long fileLength = ftell(filePointer);
-            fseek(filePointer, positionToReturnTo, SEEK_SET);
-            numberOfRows = fileLength / numberOfColumns;
+            numberOfRows = countNumberOfLines(filePointer, numberOfColumns);
         }
 
         for (int column = 0; column < numberOfColumns; column++) {
@@ -213,14 +205,14 @@ unsigned long solve03Part2() {
                 continue;
             }
 
-            struct NeighbouringIndexes neighbouringIndexes = findNeighbouringIndexes(
+            NeighbouringIndexes neighbouringIndexes = findNeighbouringIndexes(
                 row, column, numberOfRows, numberOfColumns, numberOfDigitsForCurrentPart
             );
 
             unsigned long numberToCheck =
                     parseLong(substring(currentLine, column - numberOfDigitsForCurrentPart, column));
 
-            struct Index gearIndex = verifyNeighbouringGears(
+            Index gearIndex = verifyNeighbouringGears(
                 filePointer,
                 neighbouringIndexes.indexes,
                 neighbouringIndexes.foundIndexes,
@@ -228,7 +220,7 @@ unsigned long solve03Part2() {
             );
 
             if (gearIndex.row != -1) {
-                struct PartAdjacentToGear part = { numberToCheck, gearIndex };
+                PartAdjacentToGear part = { numberToCheck, gearIndex };
                 partsAdjacentToGears[partsFound++] = part;
             }
         }
@@ -239,7 +231,7 @@ unsigned long solve03Part2() {
     unsigned long sumOfAllGearRatios = 0;
 
     for (int i = 0; i < partsFound; i++) {
-        struct PartAdjacentToGear part = partsAdjacentToGears[i];
+        PartAdjacentToGear part = partsAdjacentToGears[i];
 
         // We set the part number to zero for the indexes already added.
         if (part.partNumber == 0) {
@@ -253,7 +245,7 @@ unsigned long solve03Part2() {
                 continue;
             }
 
-            struct PartAdjacentToGear potentialSecondPart = partsAdjacentToGears[j];
+            PartAdjacentToGear potentialSecondPart = partsAdjacentToGears[j];
             if (part.gearIndex.row == potentialSecondPart.gearIndex.row &&
                 part.gearIndex.column == potentialSecondPart.gearIndex.column) {
 
@@ -268,7 +260,7 @@ unsigned long solve03Part2() {
         }
 
         if (indexOfSecondAdjacentPart != -1) {
-            struct PartAdjacentToGear secondPart = partsAdjacentToGears[indexOfSecondAdjacentPart];
+            PartAdjacentToGear secondPart = partsAdjacentToGears[indexOfSecondAdjacentPart];
             sumOfAllGearRatios += part.partNumber * secondPart.partNumber;
             partsAdjacentToGears[i].partNumber = 0;
             partsAdjacentToGears[indexOfSecondAdjacentPart].partNumber = 0;
