@@ -3,6 +3,7 @@
 #include "solutions/02-cubes.h"
 #include "solutions/03-gear.h"
 #include "solutions/04-scratchcards.h"
+#include "solutions/05-seeds.h"
 
 int main() {
 
@@ -32,6 +33,10 @@ int main() {
     printf("|   Problem 04 (Scratchcards)  |\n");
     printf("|------------------------------|\n");
     printf("|   I: %ld   |  II: %ld  |\n", solve04Part1(), solve04Part2());
+    printf("|------------------------------|\n");
+    printf("|       Problem 05 (Seeds)     |\n");
+    printf("|------------------------------|\n");
+    printf("| I: %ld | II: %ld |\n", solve05Part1(), solve05Part2());
     printf("|------------------------------|\n");
 
     return 0;
