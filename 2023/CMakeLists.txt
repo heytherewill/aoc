@@ -10,13 +10,10 @@ add_executable(2023 main.c
     utilities/file.c
     utilities/string.h
     utilities/string.c
-    solutions/01-trebuchet.h
+    solutions/solutions.h
     solutions/01-trebuchet.c
-    solutions/02-cubes.h
     solutions/02-cubes.c
     solutions/03-gear.c
-    solutions/03-gear.h
     solutions/04-scratchcards.c
-    solutions/04-scratchcards.h
     solutions/05-seeds.c
-    solutions/05-seeds.h)
+    solutions/06-wait.c)

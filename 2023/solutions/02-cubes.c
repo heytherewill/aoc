@@ -17,10 +17,10 @@ typedef struct BallCount {
     int blue;
 } BallCount;
 
-static GameInfo parseGameId(char* currentLine) {
+static GameInfo parseGameId(char *currentLine) {
     unsigned long indexOfSpace = indexOf(currentLine, " ", 0);
     unsigned long indexOfColon = indexOf(currentLine, ":", 0);
-    char* gameId = substring(currentLine, indexOfSpace + 1, indexOfColon);
+    char *gameId = substring(currentLine, indexOfSpace + 1, indexOfColon);
     GameInfo gameInfo = { indexOfColon + 2, parseLong(gameId) };
     return gameInfo;
 }

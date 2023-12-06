@@ -1,8 +1,10 @@
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include "math.h"
 
-char* replaceFirstOccurrence(char* currentString, const char* old, const char* new) {
-    char* p = strstr(currentString, old);
+char *replaceFirstOccurrence(char *currentString, const char *old, const char *new) {
+    char *p = strstr(currentString, old);
     size_t lengthOfOldString = strlen(old);
     size_t lengthOfNewString = strlen(new);
 
@@ -17,7 +19,7 @@ char* replaceFirstOccurrence(char* currentString, const char* old, const char* n
     return currentString;
 }
 
-unsigned long indexOf(char* s, const char* substring, unsigned long startIndex) {
+unsigned long indexOf(char *s, const char *substring, unsigned long startIndex) {
     s += startIndex;
 
     char *result = strstr(s, substring);
@@ -29,10 +31,10 @@ unsigned long indexOf(char* s, const char* substring, unsigned long startIndex) 
     }
 }
 
-char* insertStringInIndex(char* currentString, const char* stringToInsert, unsigned long index) {
+char *insertStringInIndex(char *currentString, const char *stringToInsert, unsigned long index) {
     size_t resultLength = strlen(currentString) + strlen(stringToInsert);
 
-    char* result = (char*)malloc((resultLength + 1) * sizeof(char));
+    char *result = (char*)malloc((resultLength + 1) * sizeof(char));
 
     strncpy(result, currentString, index);
     result[index] = '\0';
@@ -42,12 +44,31 @@ char* insertStringInIndex(char* currentString, const char* stringToInsert, unsig
     return result;
 }
 
-char* substring(const char* str, unsigned long start, unsigned long end) {
+char *substring(const char *str, unsigned long start, unsigned long end) {
     unsigned long length = end - start;
 
-    char* result = (char*)malloc((length + 1) * sizeof(char));
+    char *result = (char*)malloc((length + 1) * sizeof(char));
     strncpy(result, str + start, length);
     result[length] = '\0';
 
+    return result;
+}
+
+long readNextSpaceSeparatedNumber(
+    char *string,
+    int *startingIndex
+) {
+    int i = *startingIndex;
+    int numberLength = 0;
+    do {
+        numberLength++;
+        i++;
+    } while (isdigit(string[i]));
+
+    long result = parseLong(
+        substring(string, i - numberLength, i)
+    );
+
+    (*startingIndex) = i;
     return result;
 }

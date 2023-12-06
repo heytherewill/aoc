@@ -11,7 +11,7 @@ typedef struct Index {
 } Index;
 
 typedef struct NeighbouringIndexes {
-    Index* indexes;
+    Index *indexes;
     int foundIndexes;
 } NeighbouringIndexes;
 
@@ -37,7 +37,7 @@ NeighbouringIndexes findNeighbouringIndexes(
             (checkRowBelow * checkCharacterAfter) +
             checkCharacterBefore + checkCharacterAfter;
 
-    Index* indexesToCheck = malloc(totalNumberOfIndexesToCheck * sizeof(Index));
+    Index *indexesToCheck = malloc(totalNumberOfIndexesToCheck * sizeof(Index));
     int numberOfIndexesToCheck = 0;
 
     if (checkRowAbove) {
@@ -74,7 +74,7 @@ NeighbouringIndexes findNeighbouringIndexes(
     return result;
 }
 
-bool verifyNumberValidity(FILE* filePointer, Index* indexes, int numberOfIndexes, long columnWidth) {
+bool verifyNumberValidity(FILE *filePointer, Index *indexes, int numberOfIndexes, long columnWidth) {
 
     bool valid = false;
     long positionToReturnTo = ftell(filePointer);
@@ -96,7 +96,7 @@ bool verifyNumberValidity(FILE* filePointer, Index* indexes, int numberOfIndexes
     return valid;
 }
 
-Index verifyNeighbouringGears(FILE* filePointer, Index* indexes, int numberOfIndexes, long columnWidth) {
+Index verifyNeighbouringGears(FILE *filePointer, Index *indexes, int numberOfIndexes, long columnWidth) {
 
     Index result = {-1, -1};
     long positionToReturnTo = ftell(filePointer);
@@ -182,7 +182,7 @@ unsigned long solve03Part2() {
 
     unsigned long numberOfColumns = 0;
     unsigned long numberOfRows = 0;
-    PartAdjacentToGear* partsAdjacentToGears = malloc(1000 * sizeof(PartAdjacentToGear));
+    PartAdjacentToGear *partsAdjacentToGears = malloc(1000 * sizeof(PartAdjacentToGear));
 
     int row = 0;
     int partsFound = 0;

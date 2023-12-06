@@ -39,14 +39,7 @@ long solve(bool useSeedRanges) {
                         continue;
                     }
 
-                    int numberLength = 0;
-                    do {
-                        numberLength++;
-                        indexForSeedScan++;
-                    } while (isdigit(currentLine[indexForSeedScan]));
-
-                    char *numericString = substring(currentLine, indexForSeedScan - numberLength, indexForSeedScan);
-                    long parsedNumber = parseLong(numericString);
+                    long parsedNumber = readNextSpaceSeparatedNumber(currentLine, &indexForSeedScan);
 
                     const SeedRange seed = { parsedNumber, parsedNumber };
                     seeds[numberOfSeeds++] = seed;
@@ -57,29 +50,13 @@ long solve(bool useSeedRanges) {
                         continue;
                     }
 
-                    int numberLength = 0;
-                    do {
-                        numberLength++;
-                        indexForSeedScan++;
-                    } while (isdigit(currentLine[indexForSeedScan]));
-
-                    long firstSeed = parseLong(
-                        substring(currentLine, indexForSeedScan - numberLength, indexForSeedScan)
-                    );
+                    long firstSeed = readNextSpaceSeparatedNumber(currentLine, &indexForSeedScan);
 
                     while (currentLine[indexForSeedScan] == ' ') {
                         indexForSeedScan++;
                     }
 
-                    numberLength = 0;
-                    do {
-                        numberLength++;
-                        indexForSeedScan++;
-                    } while (isdigit(currentLine[indexForSeedScan]));
-
-                    long range = parseLong(
-                        substring(currentLine, indexForSeedScan - numberLength, indexForSeedScan)
-                    );
+                    long range = readNextSpaceSeparatedNumber(currentLine, &indexForSeedScan);
 
                     const SeedRange seedRange = { firstSeed, firstSeed + range - 1 };
                     seeds[numberOfSeeds++] = seedRange;
@@ -98,42 +75,16 @@ long solve(bool useSeedRanges) {
 
                 isReadingMap = true;
 
-                int numberLength = 0;
                 int i = 0;
-                do {
-                    i++;
-                    numberLength++;
-                } while (currentLine[i] != ' ');
-
-
-                long destinationRangeStart = parseLong(
-                    substring(currentLine, i - numberLength, i)
-                );
+                long destinationRangeStart = readNextSpaceSeparatedNumber(currentLine, &i);
 
                 i++;
 
-                numberLength = 0;
-                do {
-                    i++;
-                    numberLength++;
-                } while (currentLine[i] != ' ');
-
-
-                long sourceRangeStart = parseLong(
-                    substring(currentLine, i - numberLength, i)
-                );
+                long sourceRangeStart = readNextSpaceSeparatedNumber(currentLine, &i);
 
                 i++;
 
-                numberLength = 0;
-                do {
-                    i++;
-                    numberLength++;
-                } while (isdigit(currentLine[i]));
-
-                long range = parseLong(
-                    substring(currentLine, i - numberLength, i)
-                );
+                long range = readNextSpaceSeparatedNumber(currentLine, &i);
 
                 AlmanacEntry almanacEntry = {
                     sourceRangeStart,

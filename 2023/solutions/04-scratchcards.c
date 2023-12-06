@@ -5,7 +5,7 @@
 #include "../utilities/math.h"
 #include "../utilities/string.h"
 
-static int playGame(char* currentLine, int currentGame) {
+static int playGame(char *currentLine, int currentGame) {
     int digitsInNumber = countNumberOfDigitsInNumber(currentGame);
     int currentIndex = 7 + digitsInNumber;
 
@@ -80,8 +80,8 @@ long solve04Part2() {
     int currentGame = 1;
     int currentGameIndex = 0;
     int numberOfGames = 0;
-    int* amountOfScratchCards;
-    int* memoizedGameResults;
+    int *amountOfScratchCards;
+    int *memoizedGameResults;
 
     readEveryLineForInput(4) {
 

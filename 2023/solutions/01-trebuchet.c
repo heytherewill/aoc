@@ -12,7 +12,7 @@ typedef struct Insertion {
     int numberToInsert;
 } Insertion;
 
-static const char* possibleDigits[9] = {
+static const char *possibleDigits[9] = {
     "one",
     "two",
     "three",
@@ -24,7 +24,7 @@ static const char* possibleDigits[9] = {
     "nine"
 };
 
-static char* replaceWrittenDigitsOn(char* line) {
+static char *replaceWrittenDigitsOn(char *line) {
 
     int currentSubstitution = 0;
     const int maxNumberOfSubstitutions = 10;
@@ -68,7 +68,7 @@ static long solve(bool replaceWrittenDigits) {
             currentLine = replaceWrittenDigitsOn(currentLine);
         }
 
-        char* numberString = malloc(3);
+        char *numberString = malloc(3);
         numberString[2] = '\0';
         bool firstDigitWasFound = false;
 
