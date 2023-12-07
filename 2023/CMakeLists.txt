@@ -16,4 +16,6 @@ add_executable(2023 main.c
     solutions/03-gear.c
     solutions/04-scratchcards.c
     solutions/05-seeds.c
-    solutions/06-wait.c)
+    solutions/06-wait.c
+    solutions/07-camel.c
+)
