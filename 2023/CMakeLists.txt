@@ -18,4 +18,5 @@ add_executable(2023 main.c
     solutions/05-seeds.c
     solutions/06-wait.c
     solutions/07-camel.c
+    solutions/08-wasteland.c
 )

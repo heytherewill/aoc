@@ -40,7 +40,11 @@ int main() {
     printf("|------------------------------|\n");
     printf("|   Problem 07 (Camel Cards)   |\n");
     printf("|------------------------------|\n");
-    printf("|   I: %ld | II: %ld  |\n", solve07Part1(), solve07Part2());
+    printf("| I: %ld | II: %ld |\n", solve07Part1(), solve07Part2());
+    printf("|------------------------------|\n");
+    printf("|    Problem 08  (Wasteland)   |\n");
+    printf("|------------------------------|\n");
+    printf("| I: %ld | II: %ld |\n", solve08Part1(), solve08Part2());
     printf("|------------------------------|\n");
 
     return 0;
