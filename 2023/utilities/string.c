@@ -58,8 +58,15 @@ long readNextSpaceSeparatedNumber(
     char *string,
     int *startingIndex
 ) {
+    int sign = 1;
     int i = *startingIndex;
     int numberLength = 0;
+
+    if (string[i] == '-') {
+        sign = -1;
+        i++;
+    }
+
     do {
         numberLength++;
         i++;
@@ -70,5 +77,5 @@ long readNextSpaceSeparatedNumber(
     );
 
     (*startingIndex) = i;
-    return result;
+    return result * sign;
 }
