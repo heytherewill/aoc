@@ -20,4 +20,5 @@ add_executable(2023 main.c
     solutions/07-camel.c
     solutions/08-wasteland.c
     solutions/09-mirage.c
+    solutions/10-maze.c
 )

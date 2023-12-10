@@ -51,6 +51,10 @@ int main() {
     printf("|-------------------------------|\n");
     printf("|    I: %ld | II: %ld    |\n", solve09Part1(), solve09Part2());
     printf("|-------------------------------|\n");
+    printf("|    Problem 10  (Pipe Maze)    |\n");
+    printf("|-------------------------------|\n");
+    printf("|      I: %ld   |  II: %ld     |\n", solve10Part1(), solve10Part2());
+    printf("|-------------------------------|\n");
 
     return 0;
 }
