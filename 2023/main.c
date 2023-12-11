@@ -55,6 +55,10 @@ int main() {
     printf("|-------------------------------|\n");
     printf("|      I: %ld   |  II: %ld     |\n", solve10Part1(), solve10Part2());
     printf("|-------------------------------|\n");
+    printf("| Problem 11 (Cosmic Expansion) |\n");
+    printf("|-------------------------------|\n");
+    printf("|      I: %ld   |  II: %ld     |\n", solve11Part1(), solve11Part2());
+    printf("|-------------------------------|\n");
 
     return 0;
 }

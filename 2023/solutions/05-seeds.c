@@ -2,9 +2,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "../utilities/file.h"
-#include "../utilities/string.h"
-#include "../utilities/math.h"
+#include "../utilities/utilities.h"
 
 typedef struct AlmanacEntry {
     long start;
@@ -17,7 +15,7 @@ typedef struct SeedRange {
     long lastSeed;
 } SeedRange;
 
-long solve(bool useSeedRanges) {
+static long solve(bool useSeedRanges) {
 
     SeedRange *seeds = NULL;
     int indexForSeedScan = 7;

@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "math.h"
+#include "utilities.h"
 
 char *replaceFirstOccurrence(char *currentString, const char *old, const char *new) {
     char *p = strstr(currentString, old);

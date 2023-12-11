@@ -1,10 +1,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#include "../utilities/file.h"
-#include "../utilities/math.h"
-#include "../utilities/string.h"
 #include <search.h>
+#include "../utilities/utilities.h"
 
 static long solve(bool simultaneousCheck) {
     int numberOfDirections = 0;

@@ -2,9 +2,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../utilities/file.h"
-#include "../utilities/string.h"
-#include "../utilities/math.h"
+#include "../utilities/utilities.h"
 
 typedef struct GameInfo {
     unsigned long inputStartIndex;

@@ -1,15 +1,7 @@
 #include <string.h>
-#include <ctype.h>
 #include <stdbool.h>
 #include <search.h>
-#include "../utilities/file.h"
-#include "../utilities/string.h"
-#include "../utilities/math.h"
-
-typedef struct Position {
-    int x;
-    int y;
-} Position;
+#include "../utilities/utilities.h"
 
 typedef enum Direction {
     North,
@@ -17,12 +9,6 @@ typedef enum Direction {
     East,
     West
 } Direction;
-
-char readFileAtPosition(FILE* filePointer, Position position, int columnWidth) {
-    long seekTo = (position.y * columnWidth) + position.x;
-    fseek(filePointer, seekTo, SEEK_SET);
-    return getc(filePointer);
-}
 
 void travelInPipe(char pipe, Position *currentPosition, Direction *travelingDirection) {
     const Direction currentTravelingDirection = *travelingDirection;
@@ -72,6 +58,8 @@ char *keyForPosition(Position position) {
     return insertStringInIndex(xString, yString, digitsInX + 1);
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wint-to-void-pointer-cast"
 long addAllTilesInMazeToMap( FILE* filePointer, const Position startingPosition, int numberOfColumns) {
 
     hcreate(99999);
@@ -118,6 +106,7 @@ long addAllTilesInMazeToMap( FILE* filePointer, const Position startingPosition,
 
     return stepCount;
 }
+#pragma clang diagnostic pop
 
 long solve10Part1() {
 

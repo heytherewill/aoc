@@ -1,9 +1,7 @@
 #include <ctype.h>
 #include <math.h>
 #include <string.h>
-#include "../utilities/file.h"
-#include "../utilities/math.h"
-#include "../utilities/string.h"
+#include "../utilities/utilities.h"
 
 static int playGame(char *currentLine, int currentGame) {
     int digitsInNumber = countNumberOfDigitsInNumber(currentGame);

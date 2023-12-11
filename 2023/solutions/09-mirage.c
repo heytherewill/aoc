@@ -1,11 +1,8 @@
 #include <stdlib.h>
 #include <string.h>
-#include "../utilities/file.h"
-#include "../utilities/math.h"
-#include "../utilities/string.h"
-#include <search.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include "../utilities/utilities.h"
 
 static long extrapolate(const long *numbers, int numberCount, bool extrapolateBackwards) { // NOLINT(*-no-recursion)
     long *nextSequence = malloc((numberCount - 1) * sizeof(long));

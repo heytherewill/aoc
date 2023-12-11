@@ -2,9 +2,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
-#include "../utilities/file.h"
-#include "../utilities/math.h"
-#include "../utilities/string.h"
+#include "../utilities/utilities.h"
 
 #define handSize 5
 

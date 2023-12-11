@@ -3,9 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "../utilities/file.h"
-#include "../utilities/string.h"
-#include "../utilities/math.h"
+#include "../utilities/utilities.h"
 
 typedef struct Insertion {
     unsigned long indexInString;

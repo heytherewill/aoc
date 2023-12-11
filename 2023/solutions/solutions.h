@@ -18,3 +18,5 @@ long solve09Part1();
 long solve09Part2();
 long solve10Part1();
 long solve10Part2();
+long solve11Part1();
+long solve11Part2();

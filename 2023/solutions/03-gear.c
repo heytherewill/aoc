@@ -1,9 +1,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdbool.h>
-#include "../utilities/file.h"
-#include "../utilities/string.h"
-#include "../utilities/math.h"
+#include "../utilities/utilities.h"
 
 typedef struct Index {
     long row;

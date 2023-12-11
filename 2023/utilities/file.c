@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "utilities.h"
 
 FILE *readInput(int number) {
     char workingDirectory[PATH_MAX];
@@ -36,4 +37,10 @@ int countNumberOfLines(FILE *filePointer, int numberOfColumns) {
     unsigned long fileLength = ftell(filePointer);
     fseek(filePointer, positionToReturnTo, SEEK_SET);
     return fileLength / numberOfColumns;
+}
+
+char readFileAtPosition(FILE* filePointer, Position position, int columnWidth) {
+    long seekTo = (position.y * columnWidth) + position.x;
+    fseek(filePointer, seekTo, SEEK_SET);
+    return getc(filePointer);
 }
