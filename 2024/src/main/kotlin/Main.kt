@@ -1,11 +1,13 @@
 package com.heytherewill
 
 import com.heytherewill.solutions.HistorianHysteria
+import com.heytherewill.solutions.MullItOver
 import com.heytherewill.solutions.RedNosedReports
 
 private val solutions = listOf(
     HistorianHysteria(),
-    RedNosedReports()
+    RedNosedReports(),
+    MullItOver()
 )
 
 private const val lineInternalSpace = 31
