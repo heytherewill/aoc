@@ -1,5 +1,6 @@
 package com.heytherewill
 
+import com.heytherewill.solutions.CeresSearch
 import com.heytherewill.solutions.HistorianHysteria
 import com.heytherewill.solutions.MullItOver
 import com.heytherewill.solutions.RedNosedReports
@@ -7,7 +8,8 @@ import com.heytherewill.solutions.RedNosedReports
 private val solutions = listOf(
     HistorianHysteria(),
     RedNosedReports(),
-    MullItOver()
+    MullItOver(),
+    CeresSearch()
 )
 
 private const val lineInternalSpace = 31
