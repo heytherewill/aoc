@@ -1,21 +1,15 @@
 package com.heytherewill.solutions
 
-import com.heytherewill.utilities.readFirstInputForDay
-import com.heytherewill.utilities.readSecondInputForDay
-
 class MullItOver : Solution {
-    override val day = 3
     override val name = "Mull It Over"
 
-    override fun solvePartOne(): Long {
-        val input = readFirstInputForDay(day)
+    override fun solvePartOne(input: String): Long {
         val sum = processCorruptedProgramMemory(input, useConditionals = false)
         return sum
     }
 
 
-    override fun solvePartTwo(): Long {
-        val input = readSecondInputForDay(day)
+    override fun solvePartTwo(input: String): Long {
         val sum = processCorruptedProgramMemory(input, useConditionals = true)
         return sum
     }

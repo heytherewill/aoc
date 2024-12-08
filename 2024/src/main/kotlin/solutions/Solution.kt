@@ -1,8 +1,7 @@
 package com.heytherewill.solutions
 
 interface Solution {
-    val day: Int
     val name: String
-    fun solvePartOne(): Long
-    fun solvePartTwo(): Long
+    fun solvePartOne(input: String): Long
+    fun solvePartTwo(input: String): Long
 }

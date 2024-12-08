@@ -1,23 +1,16 @@
 package com.heytherewill.solutions
 
-import com.heytherewill.utilities.readFirstInputForDay
-import com.heytherewill.utilities.readSecondInputForDay
 import kotlin.math.abs
 
 class RedNosedReports : Solution {
-    override val day = 2
     override val name = "Red-Nosed Reports"
     private val safetyThreshold = 3
 
-    override fun solvePartOne(): Long {
-        val input = readFirstInputForDay(2)
-        return solve(input, problemDampenerIsActive = false)
-    }
+    override fun solvePartOne(input: String) =
+        solve(input, problemDampenerIsActive = false)
 
-    override fun solvePartTwo(): Long {
-        val input = readSecondInputForDay(2)
-        return solve(input, problemDampenerIsActive = true)
-    }
+    override fun solvePartTwo(input: String) =
+        solve(input, problemDampenerIsActive = true)
 
     private fun solve(input: String, problemDampenerIsActive: Boolean): Long {
         val reports = parseAsReports(input)

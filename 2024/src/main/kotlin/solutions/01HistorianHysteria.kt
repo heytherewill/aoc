@@ -1,15 +1,11 @@
 package com.heytherewill.solutions
 
-import com.heytherewill.utilities.readFirstInputForDay
-import com.heytherewill.utilities.readSecondInputForDay
 import kotlin.math.abs
 
 class HistorianHysteria : Solution {
-    override val day = 1
     override val name = "Historian Hysteria"
 
-    override fun solvePartOne(): Long {
-        val input = readFirstInputForDay(1)
+    override fun solvePartOne(input: String): Long {
         val (listOne, listTwo) = parseListsFromInput(input)
 
         return listOne.sorted()
@@ -17,8 +13,7 @@ class HistorianHysteria : Solution {
             .sumOf { (first, second) -> abs(first - second) }
     }
 
-    override fun solvePartTwo(): Long {
-        val input = readSecondInputForDay(1)
+    override fun solvePartTwo(input: String): Long {
         val (listOne, listTwo) = parseListsFromInput(input)
 
         return listOne.sumOf { first ->

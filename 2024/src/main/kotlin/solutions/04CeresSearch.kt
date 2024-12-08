@@ -1,17 +1,11 @@
 package com.heytherewill.solutions
 
-import com.heytherewill.utilities.readFirstInputForDay
-import com.heytherewill.utilities.readSecondInputForDay
-
 private typealias Matrix = List<List<Char>>
 
 class CeresSearch : Solution {
-    override val day = 4
     override val name = "Ceres Search"
 
-
-    override fun solvePartOne(): Long {
-        val input = readFirstInputForDay(day)
+    override fun solvePartOne(input: String): Long {
         val matrix = parseAsMatrix(input)
         val matchesNeeded = listOf('X', 'M', 'A', 'S')
 
@@ -28,8 +22,7 @@ class CeresSearch : Solution {
         return numberOfMatches.toLong()
     }
 
-    override fun solvePartTwo(): Long {
-        val input = readSecondInputForDay(day)
+    override fun solvePartTwo(input: String): Long {
         val matrix = parseAsMatrix(input)
 
         val validCrosses: List<List<Pair<Direction, Char>>> = listOf(
