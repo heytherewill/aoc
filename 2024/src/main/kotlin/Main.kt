@@ -7,6 +7,7 @@ import com.heytherewill.solutions.HistorianHysteria
 import com.heytherewill.solutions.MullItOver
 import com.heytherewill.solutions.PrintQueue
 import com.heytherewill.solutions.RedNosedReports
+import com.heytherewill.solutions.ResonantCollinearity
 import com.heytherewill.utilities.readFirstInputForDay
 import com.heytherewill.utilities.readSecondInputForDay
 
@@ -17,7 +18,8 @@ private val solutions = listOf(
     CeresSearch(),
     PrintQueue(),
     GuardGallivant(),
-    BridgeRepair()
+    BridgeRepair(),
+    ResonantCollinearity()
 )
 
 private const val lineInternalSpace = 39

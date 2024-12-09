@@ -2,6 +2,18 @@ package com.heytherewill.utilities
 
 typealias Grid<T> = Array<Array<T>>
 
+fun parseAsGrid(input: String): Grid<Char> =
+    input.lines().map { line -> line.toList().toTypedArray() }.toTypedArray()
+
+fun <T> Grid<T>.forEachPoint(fn: (Point) -> Unit) {
+    for (y in indices) {
+        val line = this[y]
+        for (x in line.indices) {
+            fn(Point(x, y))
+        }
+    }
+}
+
 fun <T> Grid<T>.itemAtPoint(point: Point): T? =
     if (isInBounds(point)) this[point.y][point.x] else null
 

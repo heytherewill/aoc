@@ -4,6 +4,7 @@ import com.heytherewill.utilities.Direction
 import com.heytherewill.utilities.Grid
 import com.heytherewill.utilities.Point
 import com.heytherewill.utilities.itemAtPoint
+import com.heytherewill.utilities.parseAsGrid
 
 class CeresSearch : Solution {
     override val name = "Ceres Search"
@@ -90,8 +91,4 @@ class CeresSearch : Solution {
         else {
             verifyWord(currentPoint + direction, direction, currentMatch + 1, matchesNeeded)
         }
-
-
-    private fun parseAsGrid(input: String): Grid<Char> =
-        input.lines().map{ line -> line.toList().toTypedArray() }.toTypedArray()
 }
