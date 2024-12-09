@@ -1,5 +1,6 @@
 package com.heytherewill
 
+import com.heytherewill.solutions.BridgeRepair
 import com.heytherewill.solutions.CeresSearch
 import com.heytherewill.solutions.GuardGallivant
 import com.heytherewill.solutions.HistorianHysteria
@@ -15,10 +16,11 @@ private val solutions = listOf(
     MullItOver(),
     CeresSearch(),
     PrintQueue(),
-    GuardGallivant()
+    GuardGallivant(),
+    BridgeRepair()
 )
 
-private const val lineInternalSpace = 31
+private const val lineInternalSpace = 39
 private val separationText = List(lineInternalSpace) { "-" }.joinToString("")
 
 private fun printLineWithPadding(text: String) {
@@ -36,16 +38,19 @@ private fun printTreeSeparator() {
 
 fun main() {
 
-    print("                -                \n")
-    print("               ---               \n")
-    print("             --*----             \n")
-    print("           -------*---           \n")
-    print("         ------*---*----         \n")
-    print("       ---O----------O----       \n")
-    print("     -------*---O-----*-----     \n")
-    print("   ----O-----*------*---------   \n")
-    print(" ---------O------*-----------*-- \n")
-    print("---------------------------------\n")
+    print("                    -                    \n")
+    print("                   ---                   \n")
+    print("                 --*----                 \n")
+    print("               -------*---               \n")
+    print("             ------*---*----             \n")
+    print("           ---O----------O----           \n")
+    print("         -------*---O-----*-----         \n")
+    print("       ----O-----*------*---------       \n")
+    print("     ---------O------*-----------*--     \n")
+    print("   ------*--------*---------0---------   \n")
+    print("  ----------O---------0--------*-------  \n")
+    print(" -----------O---------0--------*-------- \n")
+    printTreeSeparator()
     printLineWithPadding("Advent of Code 2024")
     printTreeSeparator()
     for (solutionIndex in solutions.indices) {
