@@ -1,12 +1,15 @@
 package com.heytherewill.solutions
 
-private typealias Matrix = List<List<Char>>
+import com.heytherewill.utilities.Direction
+import com.heytherewill.utilities.Grid
+import com.heytherewill.utilities.Point
+import com.heytherewill.utilities.itemAtPoint
 
 class CeresSearch : Solution {
     override val name = "Ceres Search"
 
     override fun solvePartOne(input: String): Long {
-        val matrix = parseAsMatrix(input)
+        val matrix = parseAsGrid(input)
         val matchesNeeded = listOf('X', 'M', 'A', 'S')
 
         val numberOfMatches = matrix.indices.sumOf { y ->
@@ -23,7 +26,7 @@ class CeresSearch : Solution {
     }
 
     override fun solvePartTwo(input: String): Long {
-        val matrix = parseAsMatrix(input)
+        val matrix = parseAsGrid(input)
 
         val validCrosses: List<List<Pair<Direction, Char>>> = listOf(
             listOf(
@@ -58,10 +61,10 @@ class CeresSearch : Solution {
             val line = matrix[y]
             line.indices.sumOf { x ->
                 val point = Point(x, y)
-                if (matrix.safeCheckIndex(point, 'A')) {
+                if (matrix.itemAtPoint(point) == 'A') {
                     val found = validCrosses.any { matchPairs ->
                         matchPairs.all {  matchPair ->
-                            matrix.safeCheckIndex(point + matchPair.first, matchPair.second)
+                            matrix.itemAtPoint(point + matchPair.first) == matchPair.second
                         }
                     }
                     if (found) {
@@ -76,47 +79,19 @@ class CeresSearch : Solution {
         }
     }
 
-    private fun Matrix.verifyWord(
+    private fun Grid<Char>.verifyWord(
         currentPoint: Point,
         direction: Direction,
         currentMatch: Int,
         matchesNeeded: List<Char>
     ): Int =
-        if (!safeCheckIndex(currentPoint, matchesNeeded[currentMatch])) { 0 }
+        if (itemAtPoint(currentPoint) != matchesNeeded[currentMatch]) { 0 }
         else if (currentMatch == matchesNeeded.size - 1) { 1 }
         else {
             verifyWord(currentPoint + direction, direction, currentMatch + 1, matchesNeeded)
         }
 
-    private fun Matrix.safeCheckIndex(point: Point, char: Char): Boolean {
-        val width = first().size
-        if (point.x < 0 || point.x >= width) {
-            return false
-        }
 
-        val height = size
-        if (point.y < 0 || point.y >= height) {
-            return false
-        }
-
-        return this[point.y][point.x] == char
-    }
-
-    private fun parseAsMatrix(input: String): Matrix =
-        input.lines().map { it.toList() }
-
-    private data class Point(val x: Int, val y: Int) {
-        operator fun plus(other: Direction): Point = Point(x + other.x, y + other.y)
-    }
-
-    private enum class Direction(val x: Int, val y: Int) {
-        North(0, -1),
-        South(0, 1),
-        East(1, 0),
-        West(-1, 0),
-        NorthEast(1, -1),
-        NorthWest(-1, -1),
-        SouthEast(1, 1),
-        SouthWest(-1, 1);
-    }
+    private fun parseAsGrid(input: String): Grid<Char> =
+        input.lines().map{ line -> line.toList().toTypedArray() }.toTypedArray()
 }

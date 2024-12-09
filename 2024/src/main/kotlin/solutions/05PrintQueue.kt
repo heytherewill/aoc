@@ -1,5 +1,6 @@
 package com.heytherewill.solutions
 
+import com.heytherewill.utilities.addToSetOfKey
 import java.util.Comparator
 
 private typealias OrderingRules = HashMap<Int, HashSet<Int>>
@@ -57,14 +58,6 @@ class PrintQueue : Solution {
         }
 
         return SafetyManual(OrderingRuleComparator(orderingRules), pagesToProduce)
-    }
-
-    private fun OrderingRules.addToSetOfKey(key: Int, value: Int) {
-        if (!containsKey(key)) {
-            this[key] = HashSet()
-        }
-
-        this[key]!!.add(value)
     }
 }
 
