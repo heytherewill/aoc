@@ -2,6 +2,7 @@ package com.heytherewill
 
 import com.heytherewill.solutions.BridgeRepair
 import com.heytherewill.solutions.CeresSearch
+import com.heytherewill.solutions.DiskFragmenter
 import com.heytherewill.solutions.GuardGallivant
 import com.heytherewill.solutions.HistorianHysteria
 import com.heytherewill.solutions.MullItOver
@@ -19,7 +20,8 @@ private val solutions = listOf(
     PrintQueue(),
     GuardGallivant(),
     BridgeRepair(),
-    ResonantCollinearity()
+    ResonantCollinearity(),
+    DiskFragmenter()
 )
 
 private const val lineInternalSpace = 39
