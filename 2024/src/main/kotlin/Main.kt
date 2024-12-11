@@ -5,23 +5,28 @@ import com.heytherewill.solutions.CeresSearch
 import com.heytherewill.solutions.DiskFragmenter
 import com.heytherewill.solutions.GuardGallivant
 import com.heytherewill.solutions.HistorianHysteria
+import com.heytherewill.solutions.HoofIt
 import com.heytherewill.solutions.MullItOver
 import com.heytherewill.solutions.PrintQueue
 import com.heytherewill.solutions.RedNosedReports
 import com.heytherewill.solutions.ResonantCollinearity
 import com.heytherewill.utilities.readFirstInputForDay
 import com.heytherewill.utilities.readSecondInputForDay
+import kotlin.system.measureTimeMillis
 
-private val solutions = listOf(
+const val debug = true
+
+private fun createSolutions(useCache: Boolean) = listOf(
     HistorianHysteria(),
     RedNosedReports(),
     MullItOver(),
     CeresSearch(),
     PrintQueue(),
-    GuardGallivant(),
-    BridgeRepair(),
+    GuardGallivant(useCache),
+    BridgeRepair(useCache),
     ResonantCollinearity(),
-    DiskFragmenter()
+    DiskFragmenter(useCache),
+    HoofIt()
 )
 
 private const val lineInternalSpace = 39
@@ -41,7 +46,6 @@ private fun printTreeSeparator() {
 }
 
 fun main() {
-
     print("                    -                    \n")
     print("                   ---                   \n")
     print("                 --*----                 \n")
@@ -57,14 +61,22 @@ fun main() {
     printTreeSeparator()
     printLineWithPadding("Advent of Code 2024")
     printTreeSeparator()
+    val solutions = createSolutions(useCache = true)
     for (solutionIndex in solutions.indices) {
         val day = solutionIndex + 1
         val solution = solutions[solutionIndex]
         printLineWithPadding("Day $day: ${solution.name}")
         printTreeSeparator()
-        val partOneInput = readFirstInputForDay(day)
-        val partTwoInput = readSecondInputForDay(day)
-        printLineWithPadding("I: ${solution.solvePartOne(partOneInput)} | II: ${solution.solvePartTwo(partTwoInput)}")
+
+        val executionTime = measureTimeMillis {
+            val partOneInput = readFirstInputForDay(day)
+            val partTwoInput = readSecondInputForDay(day)
+            printLineWithPadding("I: ${solution.solvePartOne(partOneInput)} | II: ${solution.solvePartTwo(partTwoInput)}")
+        }
+
+        if (debug) {
+            printLineWithPadding("Executed in: $executionTime ms")
+        }
         printTreeSeparator()
     }
 }

@@ -5,16 +5,15 @@ private data class Equation(
     val arguments: List<Int>
 )
 
-class BridgeRepair : Solution {
+class BridgeRepair(useCache: Boolean) : SlowRunningSolution(useCache) {
     override val name: String = "Bridge Repair"
 
-    override fun solvePartOne(input: String) =
-//        0L
+    override fun slowSolvePartOne(input: String) =
         parseAsEquations(input)
             .filter(::canBeEvaluated)
             .sumOf { it.expectedOutput }
 
-    override fun solvePartTwo(input: String)=
+    override fun slowSolvePartTwo(input: String)=
         parseAsEquations(input)
             .filter { canBeEvaluated(it, validOperations = Operation.entries) }
             .sumOf { it.expectedOutput }

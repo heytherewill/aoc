@@ -5,6 +5,9 @@ typealias Grid<T> = Array<Array<T>>
 fun parseAsGrid(input: String): Grid<Char> =
     input.lines().map { line -> line.toList().toTypedArray() }.toTypedArray()
 
+fun parseAsIntegerGrid(input: String): Grid<Int> =
+    input.lines().map { line -> line.map { it.digitToInt() }.toTypedArray() }.toTypedArray()
+
 fun <T> Grid<T>.forEachPoint(fn: (Point) -> Unit) {
     for (y in indices) {
         val line = this[y]

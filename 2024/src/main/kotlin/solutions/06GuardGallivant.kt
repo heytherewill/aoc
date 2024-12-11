@@ -25,10 +25,10 @@ private enum class Tile {
         }
 }
 
-class GuardGallivant : Solution {
+class GuardGallivant(useCache: Boolean) : SlowRunningSolution(useCache) {
     override val name: String = "Guard Gallivant"
 
-    override fun solvePartOne(input: String): Long {
+    override fun slowSolvePartOne(input: String): Long {
         val state = parseAsState(input)
         state.grid.traverse(state.startingPoint)
 
@@ -37,7 +37,7 @@ class GuardGallivant : Solution {
         }.toLong()
     }
 
-    override fun solvePartTwo(input: String): Long {
+    override fun slowSolvePartTwo(input: String): Long {
         val state = parseAsState(input)
         val originalGrid = state.grid.copyOf()
         state.grid.traverse(state.startingPoint)

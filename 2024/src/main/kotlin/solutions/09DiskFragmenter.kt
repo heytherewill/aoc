@@ -9,10 +9,10 @@ private sealed interface DiskEntry {
     data class EmptySpace(override val blocks: Long) : DiskEntry
 }
 
-class DiskFragmenter : Solution {
+class DiskFragmenter(useCache: Boolean) : SlowRunningSolution(useCache) {
     override val name = "Disk Fragmenter"
 
-    override fun solvePartOne(input: String): Long {
+    override fun slowSolvePartOne(input: String): Long {
         val fullDiskMap = decompress(input)
         val fragmentedDiskMap = mutableListOf<DiskEntry.File>()
 
@@ -60,7 +60,7 @@ class DiskFragmenter : Solution {
         }
     }
 
-    override fun solvePartTwo(input: String): Long {
+    override fun slowSolvePartTwo(input: String): Long {
         val fullDiskMap = decompress(input).toMutableList()
 
         var decreasingPointer = fullDiskMap.size - 1
