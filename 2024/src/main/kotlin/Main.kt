@@ -7,6 +7,7 @@ import com.heytherewill.solutions.GuardGallivant
 import com.heytherewill.solutions.HistorianHysteria
 import com.heytherewill.solutions.HoofIt
 import com.heytherewill.solutions.MullItOver
+import com.heytherewill.solutions.PlutonianPebbles
 import com.heytherewill.solutions.PrintQueue
 import com.heytherewill.solutions.RedNosedReports
 import com.heytherewill.solutions.ResonantCollinearity
@@ -26,7 +27,8 @@ private fun createSolutions(useCache: Boolean) = listOf(
     BridgeRepair(useCache),
     ResonantCollinearity(),
     DiskFragmenter(useCache),
-    HoofIt()
+    HoofIt(),
+    PlutonianPebbles()
 )
 
 private const val lineInternalSpace = 39
