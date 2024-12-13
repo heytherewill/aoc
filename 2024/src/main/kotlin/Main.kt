@@ -3,6 +3,7 @@ package com.heytherewill
 import com.heytherewill.solutions.BridgeRepair
 import com.heytherewill.solutions.CeresSearch
 import com.heytherewill.solutions.DiskFragmenter
+import com.heytherewill.solutions.GardenGroups
 import com.heytherewill.solutions.GuardGallivant
 import com.heytherewill.solutions.HistorianHysteria
 import com.heytherewill.solutions.HoofIt
@@ -28,7 +29,8 @@ private fun createSolutions(useCache: Boolean) = listOf(
     ResonantCollinearity(),
     DiskFragmenter(useCache),
     HoofIt(),
-    PlutonianPebbles()
+    PlutonianPebbles(),
+    GardenGroups(),
 )
 
 private const val lineInternalSpace = 39

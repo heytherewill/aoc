@@ -7,13 +7,6 @@ import com.heytherewill.utilities.forEachPoint
 import com.heytherewill.utilities.itemAtPoint
 import com.heytherewill.utilities.parseAsIntegerGrid
 
-private val validTrailMovementDirections = listOf(
-    Direction.North,
-    Direction.South,
-    Direction.East,
-    Direction.West
-)
-
 class HoofIt : Solution {
     override val name = "Hoof It"
 
@@ -53,7 +46,7 @@ class HoofIt : Solution {
         val pointIsValidElevation = grid.itemAtPoint(currentPoint) == currentElevation
         return if (pointIsValidElevation) {
             if (currentElevation == 9) listOf(currentPoint)
-            else validTrailMovementDirections
+            else Direction.cardinal
                 .map { direction -> findEndPointsForTrailHead(currentPoint + direction, grid, currentElevation + 1) }
                 .reduce { a, b -> a + b }
         } else {

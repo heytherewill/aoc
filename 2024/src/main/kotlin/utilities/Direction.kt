@@ -22,6 +22,22 @@ enum class Direction(val x: Int, val y: Int) {
             SouthWest -> NorthWest
         }
 
+    companion object {
+        val cardinal = listOf(
+            North,
+            South,
+            East,
+            West
+        )
+
+        val ordinal = listOf(
+            NorthEast,
+            SouthWest,
+            NorthWest,
+            SouthEast
+        )
+    }
+
 }
 
 enum class Degrees {
