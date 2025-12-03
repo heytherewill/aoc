@@ -8,4 +8,5 @@ add_executable(aoc main.cpp
         utilities/file.h
         solutions/solution01_secretentrance.cpp
         solutions/solution02_giftshop.cpp
+        solutions/solution03_lobby.cpp
 )

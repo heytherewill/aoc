@@ -17,10 +17,14 @@ int main() {
     std::cout << "|-------------------------------|" << std::endl;
     std::cout << "| Problem 01  (Secret Entrance) |" << std::endl;
     std::cout << "|-------------------------------|" << std::endl;
-    std::cout << "|   I: " << solveDay01Part01() << "    |    II: " << solveDay01Part02() << "  |\n" << std::endl;
+    std::cout << "|   I: " << solveDay01Part01() << "     |    II: " << solveDay01Part02() << "   |" << std::endl;
     std::cout << "|-------------------------------|" << std::endl;
     std::cout << "|    Problem  02 (Gift Shop)    |" << std::endl;
     std::cout << "|-------------------------------|" << std::endl;
-    std::cout << "|   I: " << solveDay02Part01() << "    |    II: " << solveDay02Part02() << "  |\n" << std::endl;
+    std::cout << "| I: " << solveDay02Part01() << " | II: " << solveDay02Part02() << " |" << std::endl;
+    std::cout << "|-------------------------------|" << std::endl;
+    std::cout << "|      Problem  03 (Lobby)      |" << std::endl;
+    std::cout << "|-------------------------------|" << std::endl;
+    std::cout << "|   I: " << solveDay03Part01() << "    |    II: " << solveDay03Part02() << "  |" << std::endl;
     return 0;
 }
