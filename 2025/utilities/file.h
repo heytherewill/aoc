@@ -6,7 +6,7 @@
 #include <format>
 #include <string>
 
-std::ifstream readInput(const int number) {
+inline std::ifstream readInput(const int number) {
     char workingDirectory[PATH_MAX];
     getcwd(workingDirectory, sizeof(workingDirectory));
     const std::string inputNumber = std::format("{:02}", number);
