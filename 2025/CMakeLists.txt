@@ -9,4 +9,5 @@ add_executable(aoc main.cpp
         solutions/solution01_secretentrance.cpp
         solutions/solution02_giftshop.cpp
         solutions/solution03_lobby.cpp
+        solutions/solution04_printingdepartment.cpp
 )

@@ -6,3 +6,5 @@ long solveDay02Part01();
 long solveDay02Part02();
 long solveDay03Part01();
 long solveDay03Part02();
+long solveDay04Part01();
+long solveDay04Part02();

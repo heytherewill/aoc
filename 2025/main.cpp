@@ -26,5 +26,9 @@ int main() {
     std::cout << "|      Problem  03 (Lobby)      |" << std::endl;
     std::cout << "|-------------------------------|" << std::endl;
     std::cout << "|   I: " << solveDay03Part01() << "    |    II: " << solveDay03Part02() << "  |" << std::endl;
+    std::cout << "|-------------------------------|" << std::endl;
+    std::cout << "|  Problem 04 (Printing Dept.)  |" << std::endl;
+    std::cout << "|-------------------------------|" << std::endl;
+    std::cout << "|    I: " << solveDay04Part01() << "    |    II: " << solveDay04Part02() << "   |" << std::endl;
     return 0;
 }
